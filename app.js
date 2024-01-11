@@ -10,9 +10,6 @@ app.get('/', function(_req, res) {
 });
 
 app.post('/files/:id/convert', async (req, res) => {
-  const drives = await client
-        .api(`/users/${USER_ID}/drives`)
-        .get();
   const fileId = req.params.id;
   const file = await getFile(fileId);
   file.path = file.physicalUri.replace('share://', '/share/');
@@ -43,7 +40,7 @@ app.post('/files/:id/convert', async (req, res) => {
       },
     };
     const uploadTask = new LargeFileUploadTask(client, fileObject, uploadSession, options);
-    const result = await uploadTask.upload();
+    await uploadTask.upload();
   } catch (err) {
     console.log(`Error uploading file: ${JSON.stringify(err)}`);
     console.error(err);
