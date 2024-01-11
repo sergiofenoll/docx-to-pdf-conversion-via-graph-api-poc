@@ -51,6 +51,8 @@ Make sure to store the secret's value, as soon as you leave this page the value 
 
 ![The form to create a new client secret](./images/creating-new-secret.png)
 
+![The newly created client secret](./images/client-secret-value.png)
+
 Your application still needs the correct permissions for uploading files. Go to the **API permissions** tab and add a new permission.
 ![Empty API permissions overview with the "Add a permission" button hovered](./images/add-a-permission.png)
 
