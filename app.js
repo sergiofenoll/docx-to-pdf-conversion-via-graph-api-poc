@@ -53,6 +53,10 @@ app.post('/files/:id/convert', async (req, res) => {
   const newFile = await storeFile(`${file.id}.pdf`, buffer);
   await setFileSource(file.uri, newFile.uri);
 
+  await client
+    .api(`/users/${USER_ID}/drive/root:/${file.id}.${file.extension}`)
+    .delete();
+
   return res
     .status(200)
     .send({
